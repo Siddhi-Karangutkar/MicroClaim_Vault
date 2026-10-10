@@ -65,7 +65,8 @@ export default function Upload() {
       const formData = new FormData();
       formData.append('receipt', file);
 
-      const response = await fetch('http://localhost:5000/api/process-receipt', {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const response = await fetch(`${backendUrl}/api/process-receipt`, {
         method: 'POST',
         body: formData,
       });
